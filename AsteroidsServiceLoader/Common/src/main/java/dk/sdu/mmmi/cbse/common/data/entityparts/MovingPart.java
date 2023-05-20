@@ -33,14 +33,6 @@ public class MovingPart
         this.rotationSpeed = rotationSpeed;
     }
 
-    public float getDx() {
-        return dx;
-    }
-
-    public float getDy() {
-        return dy;
-    }
-
     public void setDeceleration(float deceleration) {
         this.deceleration = deceleration;
     }
@@ -51,11 +43,6 @@ public class MovingPart
 
     public void setMaxSpeed(float maxSpeed) {
         this.maxSpeed = maxSpeed;
-    }
-
-    public void setSpeed(float speed) {
-        this.acceleration = speed;
-        this.maxSpeed = speed;
     }
 
     public void setRotationSpeed(float rotationSpeed) {
@@ -81,7 +68,7 @@ public class MovingPart
         float y = positionPart.getY();
         float radians = positionPart.getRadians();
         float dt = gameData.getDelta();
-
+        
         // turning
         if (left) {
             radians += rotationSpeed * dt;
@@ -112,20 +99,21 @@ public class MovingPart
         x += dx * dt;
         if (x > gameData.getDisplayWidth()) {
             x = 0;
-        } else if (x < 0) {
+        }
+        else if (x < 0) {
             x = gameData.getDisplayWidth();
         }
 
         y += dy * dt;
         if (y > gameData.getDisplayHeight()) {
             y = 0;
-        } else if (y < 0) {
+        }
+        else if (y < 0) {
             y = gameData.getDisplayHeight();
         }
 
         positionPart.setX(x);
         positionPart.setY(y);
-
         positionPart.setRadians(radians);
     }
 
